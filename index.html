@@ -450,6 +450,125 @@ textarea.form-ctrl { resize: vertical; min-height: 76px; }
 .step-dot.active  { background: var(--accent); animation: dotPulse 1s infinite; }
 .step-dot.pending { background: var(--border); }
 @keyframes dotPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.5)} }
+
+/* ── STUDY MODE SIDEBAR ── */
+.mode-btn.mode-active {
+  background: linear-gradient(135deg, rgba(79,70,229,0.35), rgba(124,58,237,0.25));
+  color: #fff; font-weight: 700;
+  border: 1px solid rgba(79,70,229,0.5);
+  box-shadow: 0 2px 12px rgba(79,70,229,0.2);
+}
+.mode-badge {
+  margin-left: auto; font-size: 9px; font-weight: 700; padding: 2px 7px;
+  border-radius: 999px; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8);
+}
+
+/* ── CATEGORY TABS ── */
+.cat-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.cat-tab {
+  padding: 8px 20px; border-radius: 999px;
+  border: 1.5px solid var(--border); background: var(--surface);
+  color: var(--muted); font-weight: 600; font-size: 12px;
+  cursor: pointer; transition: all .18s; font-family: 'Sora', sans-serif;
+}
+.cat-tab:hover { border-color: var(--accent); color: var(--accent); }
+.cat-tab.on { background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: 0 4px 14px rgba(79,70,229,0.3); }
+.cat-tab.valed.on { background: linear-gradient(135deg,#4F46E5,#7C3AED); }
+.cat-tab.profed.on { background: linear-gradient(135deg,#0F766E,#0891B2); }
+.cat-tab.gened.on { background: linear-gradient(135deg,#1D4ED8,#0891B2); }
+
+/* ── SITUATIONAL MCQ ── */
+.sit-wrap { max-width: 760px; }
+
+.sit-card {
+  background: var(--surface); border-radius: var(--r);
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+  overflow: hidden; margin-bottom: 16px;
+  animation: fadeUp .25s ease;
+}
+
+.sit-scenario {
+  background: linear-gradient(135deg, rgba(79,70,229,0.06), rgba(124,58,237,0.04));
+  border-bottom: 1px solid var(--border);
+  padding: 20px 28px 18px;
+  position: relative;
+}
+.sit-scenario::before {
+  content: '📋 Scenario';
+  display: block;
+  font-size: 9.5px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 1.4px; color: var(--accent);
+  margin-bottom: 10px;
+}
+.sit-scenario-text {
+  font-size: 14px; line-height: 1.75; color: var(--text);
+  font-style: italic;
+}
+
+.sit-question-wrap { padding: 22px 28px 8px; }
+.sit-q-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted2); margin-bottom: 8px; }
+.sit-q-text { font-size: 17px; font-weight: 700; color: var(--ink); line-height: 1.6; }
+
+.sit-choices { display: flex; flex-direction: column; gap: 8px; padding: 16px 28px 22px; }
+.sit-choice {
+  padding: 14px 18px; border-radius: var(--r-sm);
+  border: 1.5px solid var(--border); background: var(--surface);
+  cursor: pointer; display: flex; align-items: center; gap: 14px;
+  transition: all .15s; font-family: 'Sora', sans-serif;
+}
+.sit-choice:hover:not(:disabled) { border-color: var(--accent); background: rgba(79,70,229,0.04); }
+.sit-choice.correct { border-color: var(--green)!important; background: var(--green-bg)!important; }
+.sit-choice.wrong   { border-color: var(--red)!important;   background: var(--red-bg)!important;   }
+.sit-choice:disabled { cursor: default; }
+.sit-letter {
+  width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+  background: var(--surface2); display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 12px; color: var(--muted);
+  transition: all .15s;
+}
+.sit-choice.correct .sit-letter { background: var(--green); color: #fff; }
+.sit-choice.wrong   .sit-letter { background: var(--red);   color: #fff; }
+.sit-choice-text { font-size: 14px; font-weight: 500; color: var(--text); flex: 1; line-height: 1.5; }
+.sit-choice.correct .sit-choice-text { color: var(--green); font-weight: 600; }
+.sit-choice.wrong   .sit-choice-text { color: var(--red);   font-weight: 600; }
+
+.sit-feedback {
+  margin: 0 28px 22px;
+  background: rgba(79,70,229,0.05); border-left: 4px solid var(--accent);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  padding: 16px 18px; display: none;
+  animation: fadeUp .25s ease;
+}
+.sit-feedback.on { display: block; }
+.sit-fb-verdict { font-size: 15px; font-weight: 800; margin-bottom: 8px; }
+.sit-fb-correct { color: var(--green); }
+.sit-fb-wrong   { color: var(--red);   }
+.sit-fb-expl { font-size: 13px; color: var(--text); line-height: 1.65; }
+
+.sit-footer { padding: 0 28px 22px; display: flex; align-items: center; justify-content: space-between; }
+.sit-progress-info { font-size: 12px; color: var(--muted); font-weight: 500; }
+
+.sit-score-bar {
+  background: var(--surface); border-radius: var(--r);
+  padding: 18px 24px; border: 1px solid var(--border);
+  box-shadow: var(--shadow); margin-bottom: 20px;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.sit-score-pill {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border-radius: 999px;
+  font-size: 13px; font-weight: 700;
+}
+.sit-score-pill.cor { background: var(--green-bg); color: var(--green); }
+.sit-score-pill.wro { background: var(--red-bg);   color: var(--red);   }
+.sit-score-pill.tot { background: var(--surface2);  color: var(--text);  }
+
+/* ── STUDY MODE PAGE TRANSITIONS ── */
+.mode-pane { display: none; animation: fadeUp .25s ease; }
+.mode-pane.on { display: block; }
+
+/* ── FC CATEGORY ENHANCEMENT ── */
+.fc-cat-tabs { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
 </style>
 </head>
 <body>
@@ -465,15 +584,24 @@ textarea.form-ctrl { resize: vertical; min-height: 76px; }
     </div>
   </div>
 
-  <div class="nav-section-label">Study</div>
+  <div class="nav-section-label">Navigation</div>
   <button class="nav-btn active" data-page="dashboard" onclick="go('dashboard')"><span class="ni">🏠</span>Dashboard</button>
   <button class="nav-btn" data-page="import" onclick="go('import')"><span class="ni">📥</span>Import Files <span style="margin-left:auto;background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:999px">NEW</span></button>
   <button class="nav-btn" data-page="subjects" onclick="go('subjects')"><span class="ni">📂</span>Subjects</button>
-  <button class="nav-btn" data-page="flashcards" onclick="go('flashcards')"><span class="ni">🃏</span>Flashcards</button>
-  <button class="nav-btn" data-page="quiz" onclick="go('quiz')"><span class="ni">✏️</span>Quiz Mode</button>
 
-  <div class="nav-section-label" style="margin-top:12px">Progress</div>
+  <div class="nav-section-label" style="margin-top:14px">Study Mode</div>
+  <button class="nav-btn mode-btn" id="mode-fc-btn" data-page="flashcards" onclick="setStudyMode('flashcards')">
+    <span class="ni">🃏</span>Flashcards
+    <span class="mode-badge" id="fc-count-badge">0</span>
+  </button>
+  <button class="nav-btn mode-btn" id="mode-sit-btn" data-page="sit" onclick="setStudyMode('situational')">
+    <span class="ni">✏️</span>Situational MCQ
+    <span class="mode-badge" id="sit-count-badge">0</span>
+  </button>
+
+  <div class="nav-section-label" style="margin-top:14px">Progress</div>
   <button class="nav-btn" data-page="scores" onclick="go('scores')"><span class="ni">📊</span>My Scores</button>
+  <button class="nav-btn" data-page="quiz" onclick="go('quiz')"><span class="ni">⚡</span>Timed Quiz</button>
   <button class="nav-btn" data-page="add" onclick="go('add')"><span class="ni">➕</span>Add Questions</button>
 
   <div class="sidebar-footer">
@@ -497,12 +625,13 @@ textarea.form-ctrl { resize: vertical; min-height: 76px; }
     <div class="stat-card c4"><div class="stat-icon">🃏</div><div class="stat-val" id="st-flash">0</div><div class="stat-lbl">Cards Reviewed</div></div>
   </div>
   <div class="g2">
-    <div class="card">
+      <div class="card">
       <div class="card-title">🚀 Quick Start</div>
       <div class="quick-actions">
         <button class="btn btn-accent btn-lg" style="width:100%" onclick="go('import')">📥 Import PDF / Document</button>
-        <button class="btn btn-accent btn-lg" style="width:100%;background:linear-gradient(135deg,#059669,#047857)" onclick="go('flashcards')">🃏 Start Flashcards</button>
-        <button class="btn btn-outline btn-lg" style="width:100%" onclick="go('quiz')">✏️ Take a Quiz</button>
+        <button class="btn btn-accent btn-lg" style="width:100%;background:linear-gradient(135deg,#059669,#047857)" onclick="setStudyMode('flashcards')">🃏 Start Flashcards</button>
+        <button class="btn btn-accent btn-lg" style="width:100%;background:linear-gradient(135deg,#7C3AED,#9333EA)" onclick="setStudyMode('situational')">✏️ Situational MCQ</button>
+        <button class="btn btn-outline btn-lg" style="width:100%" onclick="go('quiz')">⚡ Timed Quiz</button>
       </div>
     </div>
     <div class="card">
@@ -593,7 +722,24 @@ textarea.form-ctrl { resize: vertical; min-height: 76px; }
 
 <!-- FLASHCARDS -->
 <div id="pg-flashcards" class="page">
-  <div class="page-header"><div class="page-title">🃏 Flashcards</div><div class="page-sub">Click the card to reveal the answer</div></div>
+  <div class="page-header">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <div>
+        <div class="page-title">🃏 Flashcards</div>
+        <div class="page-sub">Click the card to reveal the answer · Spaced repetition style</div>
+      </div>
+      <button class="btn btn-outline btn-sm" onclick="setStudyMode('situational')" style="gap:6px">Switch to MCQ ✏️</button>
+    </div>
+  </div>
+
+  <!-- Category Tabs -->
+  <div class="cat-tabs" id="fc-cat-tabs">
+    <button class="cat-tab on" data-cat="all" onclick="setFcCat('all',this)">🌐 All Subjects</button>
+    <button class="cat-tab valed" data-cat="ValEd" onclick="setFcCat('ValEd',this)">🎓 ValEd</button>
+    <button class="cat-tab profed" data-cat="ProfEd" onclick="setFcCat('ProfEd',this)">📖 ProfEd</button>
+    <button class="cat-tab gened" data-cat="GenEd" onclick="setFcCat('GenEd',this)">📚 GenEd</button>
+  </div>
+
   <div class="pill-row" id="fc-pills"></div>
   <div class="fc-scene">
     <div class="fc-inner" id="fc-inner" onclick="flipCard()">
@@ -653,6 +799,48 @@ textarea.form-ctrl { resize: vertical; min-height: 76px; }
     <div class="choices" id="choices-grid"></div>
     <div class="expl-box" id="expl-box"></div>
     <div class="qa-row"><button class="btn btn-accent" id="next-btn" onclick="nextQ()" style="display:none">Next →</button></div>
+  </div>
+</div>
+
+<!-- SITUATIONAL MCQ -->
+<div id="pg-sit" class="page">
+  <div class="page-header">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <div>
+        <div class="page-title">✏️ Situational MCQ</div>
+        <div class="page-sub">Application-level · Higher-order thinking · Real classroom & civic scenarios</div>
+      </div>
+      <button class="btn btn-outline btn-sm" onclick="setStudyMode('flashcards')" style="gap:6px">Switch to Flashcards 🃏</button>
+    </div>
+  </div>
+
+  <!-- Score bar -->
+  <div class="sit-score-bar">
+    <span style="font-size:13px;font-weight:700;color:var(--muted)">Session Score:</span>
+    <div class="sit-score-pill cor">✅ <span id="sit-cor">0</span> Correct</div>
+    <div class="sit-score-pill wro">❌ <span id="sit-wro">0</span> Wrong</div>
+    <div class="sit-score-pill tot">📝 <span id="sit-tot">0</span> Answered</div>
+    <button class="btn btn-outline btn-sm" style="margin-left:auto" onclick="resetSitSession()">🔄 Reset</button>
+  </div>
+
+  <!-- Category Tabs -->
+  <div class="cat-tabs" id="sit-cat-tabs">
+    <button class="cat-tab on" data-cat="all" onclick="setSitCat('all',this)">🌐 All Subjects</button>
+    <button class="cat-tab valed" data-cat="ValEd" onclick="setSitCat('ValEd',this)">🎓 ValEd</button>
+    <button class="cat-tab profed" data-cat="ProfEd" onclick="setSitCat('ProfEd',this)">📖 ProfEd</button>
+    <button class="cat-tab gened" data-cat="GenEd" onclick="setSitCat('GenEd',this)">📚 GenEd</button>
+  </div>
+
+  <!-- Subject pills -->
+  <div class="pill-row" id="sit-pills"></div>
+
+  <!-- MCQ Content -->
+  <div class="sit-wrap" id="sit-content">
+    <div class="empty-state" style="padding:60px">
+      <div class="empty-icon">✏️</div>
+      <div class="empty-t">Ready to practice</div>
+      <div class="empty-s">Select a category above to load questions</div>
+    </div>
   </div>
 </div>
 
@@ -771,6 +959,12 @@ const SUBJECTS=[
   {name:'ValEd Majorship — Foundations',icon:'🏛️',color:'#0F766E',category:'ValEd'},
   {name:'ValEd Majorship — Approaches',icon:'🎓',color:'#7C3AED',category:'ValEd'},
   {name:'ValEd Majorship — Philosophers',icon:'🧠',color:'#B45309',category:'ValEd'},
+  // ProfEd expansion
+  {name:'Developmental Reading',icon:'📖',color:'#0F766E',category:'ProfEd'},
+  {name:'Guidance & Counseling',icon:'💬',color:'#7C3AED',category:'ProfEd'},
+  {name:'Special Education (SPED)',icon:'🌟',color:'#DC2626',category:'ProfEd'},
+  {name:'Research in Education',icon:'🔍',color:'#1D4ED8',category:'ProfEd'},
+  {name:'School Management & Leadership',icon:'🏫',color:'#B45309',category:'ProfEd'},
 ];
 
 let Q=[
@@ -1405,27 +1599,408 @@ let Q=[
   {id:558,subject:'ValEd Majorship — Philosophers',question:'An existentialist philosopher "teaches that authentic existence is attained when a person lives life authentically and must free themselves from inauthentic existence by projecting possibilities." Which philosopher is this?',choices:['Jean-Paul Sartre','Soren Kierkegaard','Karl Jaspers','Martin Heidegger'],answer:3,explanation:'Martin Heidegger taught that authentic existence requires freeing oneself from inauthentic (crowd-driven) existence and owning one\'s existence by projecting one\'s own possibilities.'},
   {id:559,subject:'ValEd Majorship — Philosophers',question:'A student is confused between Pythagoras and Plato\'s view of the soul. What key idea distinguishes Pythagoras\'s view of the soul?',choices:['The soul is tripartite: rational, spirited, appetitive','The soul is immortal, divine and undergoes metempsychosis (reincarnation)','The soul is the form of the body','The soul is identical to universal reason (Logos)'],answer:1,explanation:'Pythagoras taught that the soul is immortal, divine, and undergoes metempsychosis (reincarnation into another body after death) — distinct from Plato\'s tripartite soul theory.'},
   {id:560,subject:'ValEd Majorship — Philosophers',question:'Teacher Rico explains that a Stoic philosopher "teaches that universal reason (Logos) is the greatest good in life and living, and Stoic logic discourages attachment to material pleasures, health and comfort." Which philosopher is this?',choices:['Protagoras','Pythagoras','Epicurus','Zeno of Citium'],answer:3,explanation:'Zeno of Citium was the founder of Stoicism — teaching that universal reason (Logos) is the greatest good and that wise people should be free from attachment to material pleasures and comforts.'},
+
+  // ════════════════════════════════
+  // DEVELOPMENTAL READING — 25 q
+  // ════════════════════════════════
+  {id:561,subject:'Developmental Reading',question:'The Simple View of Reading (Gough & Tunmer) states that reading comprehension equals:',choices:['Phonics × Fluency','Decoding × Language Comprehension','Vocabulary + Background Knowledge','Word Recognition + Writing Skills'],answer:1,explanation:'The Simple View of Reading: RC = D × LC (Reading Comprehension = Decoding × Language Comprehension). Both components are necessary — weakness in either limits overall reading ability.'},
+  {id:562,subject:'Developmental Reading',question:'Phonemic awareness differs from phonics in that phonemic awareness:',choices:['Involves print and letter-sound relationships','Is purely oral — the ability to hear, identify and manipulate individual sounds (phonemes) in spoken words','Requires reading of words and sentences','Is only taught in Grade 3 and above'],answer:1,explanation:'Phonemic awareness is entirely oral — it is the ability to identify and manipulate individual phonemes in spoken words WITHOUT print. Phonics connects sounds to letters and print.'},
+  {id:563,subject:'Developmental Reading',question:'A teacher who asks students to "tap out the sounds" in the word /cat/ — /k/ /æ/ /t/ — is developing which reading skill?',choices:['Reading fluency','Phonemic segmentation','Silent reading comprehension','Vocabulary development'],answer:1,explanation:'Phonemic segmentation is the ability to break spoken words into individual phonemes — a critical phonemic awareness skill that supports decoding and spelling.'},
+  {id:564,subject:'Developmental Reading',question:'Reading fluency is BEST described as the ability to read:',choices:['Very slowly with full pronunciation','Accurately, at an appropriate rate, and with expression (prosody)','Only silently without lip movement','Any text regardless of difficulty level'],answer:1,explanation:'Fluency = accuracy + rate + prosody (expression). Fluent readers recognize words automatically, freeing cognitive resources for meaning-making and comprehension.'},
+  {id:565,subject:'Developmental Reading',question:'Which of the following represents the correct order of Chall\'s Stages of Reading Development from earliest to latest?',choices:['Decoding → Fluency → Reading to Learn → Learning to Read','Pre-reading → Initial Reading → Confirmation/Fluency → Reading to Learn → Multiple Viewpoints → Construction','Phonics → Comprehension → Fluency → Critical Reading','Emergent → Beginning → Transitional → Fluent → Proficient'],answer:1,explanation:'Chall\'s 6 stages: Stage 0 (Pre-reading) → Stage 1 (Initial Reading/Decoding) → Stage 2 (Confirmation/Fluency) → Stage 3 (Reading to Learn) → Stage 4 (Multiple Viewpoints) → Stage 5 (Construction & Reconstruction).'},
+  {id:566,subject:'Developmental Reading',question:'The "Big Five" components of reading identified by the National Reading Panel (2000) include all EXCEPT:',choices:['Phonemic Awareness','Phonics','Fluency','Grammar and Sentence Structure'],answer:3,explanation:'NRP\'s Big Five: Phonemic Awareness, Phonics, Fluency, Vocabulary, and Comprehension. Grammar/sentence structure is NOT one of the five official components.'},
+  {id:567,subject:'Developmental Reading',question:'When a student reads "The dog ran fast" as "The dog run fast," the error is called a:',choices:['Omission','Substitution','Reversal','Insertion'],answer:1,explanation:'A substitution miscue replaces one word with another ("ran" → "run"). Miscue analysis (Goodman) examines the nature of reading errors to understand the reader\'s cueing strategies.'},
+  {id:568,subject:'Developmental Reading',question:'The K-W-L reading strategy stands for:',choices:['Knowledge, Writing, Listening','Know, Want to know, Learned','Key words, Writing, Language','Knowledge, Work, Learn'],answer:1,explanation:'K-W-L (Ogle, 1986): K = What I Know (activates prior knowledge), W = What I Want to Know (sets purpose), L = What I Learned (consolidates new learning). A powerful pre/during/post reading strategy.'},
+  {id:569,subject:'Developmental Reading',question:'A student who reads words accurately but slowly and without expression needs intervention focused on:',choices:['Phonemic awareness','Phonics instruction','Reading fluency','Vocabulary development'],answer:2,explanation:'Accurate but slow, expressionless reading indicates a fluency problem — the student has decoded the code but hasn\'t achieved automaticity, which requires fluency-building practice (repeated reading, reader\'s theater).'},
+  {id:570,subject:'Developmental Reading',question:'Schema theory in reading explains that comprehension is improved when:',choices:['Students read faster','Readers connect new text information to prior knowledge and experiences (schemas)','Students read more difficult texts','Texts are shorter and simpler'],answer:1,explanation:'Schema theory (Bartlett, Rumelhart): comprehension occurs when readers connect new information to existing mental frameworks (schemas) built from prior knowledge and experience.'},
+  {id:571,subject:'Developmental Reading',question:'During Oral Reading Fluency (ORF) assessment, a teacher counts words read correctly per minute. This type of assessment is a:',choices:['Portfolio assessment','Summative assessment','Curriculum-Based Measurement (CBM)','Diagnostic interview'],answer:2,explanation:'Oral Reading Fluency using words-correct-per-minute (WCPM) is a Curriculum-Based Measurement (CBM) — a quick, reliable formative assessment for monitoring reading progress.'},
+  {id:572,subject:'Developmental Reading',question:'The Directed Reading-Thinking Activity (DRTA) strategy requires students to:',choices:['Read silently and answer worksheets','Make predictions before reading, read to confirm or revise, then discuss','Copy important passages from text','Read aloud in round-robin fashion'],answer:1,explanation:'DRTA (Stauffer): students set purposes by making predictions → read to confirm/disconfirm → discuss and revise predictions. Develops critical thinking and active reading engagement.'},
+  {id:573,subject:'Developmental Reading',question:'Metacognitive reading strategies include all EXCEPT:',choices:['Monitoring comprehension','Re-reading when confused','Identifying unfamiliar words without strategies','Setting a reading purpose before reading'],answer:2,explanation:'Metacognitive strategies involve awareness and regulation of one\'s reading: monitoring comprehension, re-reading, setting purpose, summarizing. Simply encountering unfamiliar words passively is NOT a metacognitive strategy.'},
+  {id:574,subject:'Developmental Reading',question:'In the Philippines, the Early Language, Literacy and Numeracy (ELLN) program focuses on reading instruction for which grade levels?',choices:['Grades 4-6','Grades 7-10','Kindergarten to Grade 3','Grades 1-6'],answer:2,explanation:'ELLN (DepEd) focuses on Kindergarten to Grade 3 — the critical early literacy period. It trains teachers to deliver evidence-based, mother tongue-based literacy instruction.'},
+  {id:575,subject:'Developmental Reading',question:'The concept of "reading readiness" refers to:',choices:['A child\'s ability to read any text independently','The point at which a child has the physical, cognitive, and language development needed to begin formal reading instruction','A standardized reading test score','The age of 6 as universal reading start age'],answer:1,explanation:'Reading readiness is the developmental state at which a child has sufficient physical, cognitive, linguistic, and experiential background to benefit from formal reading instruction.'},
+  {id:576,subject:'Developmental Reading',question:'Bottom-up reading models (e.g., Gough\'s LaBerge-Samuels model) describe reading as:',choices:['Starting from the reader\'s prior knowledge and predicting text','A sequential process starting from letters → words → sentences → meaning','An interactive process using both print and prior knowledge simultaneously','Reading based entirely on context clues'],answer:1,explanation:'Bottom-up models: reading is a sequential, data-driven process — the reader decodes letters → words → phrases → sentences → meaning, without using prior knowledge to predict.'},
+  {id:577,subject:'Developmental Reading',question:'The Reciprocal Teaching strategy uses four comprehension strategies. Which of the following is NOT one of them?',choices:['Predicting','Questioning','Clarifying','Memorizing'],answer:3,explanation:'Reciprocal Teaching (Palincsar & Brown) uses four strategies: Predicting, Questioning, Clarifying, and Summarizing. Memorizing is NOT part of reciprocal teaching.'},
+  {id:578,subject:'Developmental Reading',question:'A student who reads "was" as "saw" is demonstrating which type of reading error?',choices:['Omission error','Substitution reversal','Semantic error','Syntactic error'],answer:1,explanation:'Reading "was" as "saw" is a visual reversal — the student reverses the letter sequence. Common in early readers and those with reading difficulties like dyslexia.'},
+  {id:579,subject:'Developmental Reading',question:'Sustained Silent Reading (SSR) programs are designed to:',choices:['Replace phonics instruction','Provide regular independent reading time to build fluency, stamina and reading motivation','Test reading comprehension daily','Develop oral reading expression'],answer:1,explanation:'SSR (Drop Everything And Read — DEAR) gives students regular, uninterrupted time to read self-selected materials — building fluency, stamina, vocabulary, and intrinsic reading motivation.'},
+  {id:580,subject:'Developmental Reading',question:'When assessing reading comprehension, a teacher who asks "What do you think the author meant by..." is checking which level of comprehension?',choices:['Literal comprehension','Inferential/interpretive comprehension','Critical/evaluative comprehension','Appreciation level'],answer:1,explanation:'Asking about author\'s meaning/intent requires inference — going beyond stated facts to interpret implied meanings. This is the interpretive/inferential level of comprehension.'},
+  {id:581,subject:'Developmental Reading',question:'Repeated Reading as an instructional strategy is primarily used to develop:',choices:['Vocabulary breadth','Reading fluency and automaticity','Phonemic awareness in beginners','Silent reading comprehension'],answer:1,explanation:'Repeated Reading (Samuels) has students read the same passage multiple times until a fluency criterion is reached — proven to improve rate, accuracy, and expression (fluency).'},
+  {id:582,subject:'Developmental Reading',question:'In the context of Developmental Reading, "decoding" refers to:',choices:['Understanding the meaning of what is read','The process of using letter-sound relationships to recognize and pronounce printed words','Summarizing a text after reading','Identifying the main idea of a passage'],answer:1,explanation:'Decoding is the process of using phonics knowledge (letter-sound relationships) to convert printed words into spoken language — a foundational word recognition skill.'},
+  {id:583,subject:'Developmental Reading',question:'A Filipino child who speaks Cebuano at home starts formal schooling. Under MTB-MLE, which language should be used as the medium of instruction for reading in Grade 1?',choices:['English','Filipino (Tagalog)','Cebuano (the child\'s mother tongue)','A combination of all three equally'],answer:2,explanation:'Under DepEd\'s MTB-MLE (RA 10533, DO 16 s.2012): the child\'s mother tongue (Cebuano) is the medium of instruction for reading in Kinder to Grade 3 — building strong literacy foundation in the first language.'},
+  {id:584,subject:'Developmental Reading',question:'The Frayer Model vocabulary strategy requires students to write:',choices:['Synonyms and antonyms only','Definition, characteristics, examples, and non-examples of a word','A word in a sentence three times','The etymology and origin of a word'],answer:1,explanation:'The Frayer Model is a graphic organizer with four quadrants: definition, characteristics/properties, examples, and non-examples — building deep vocabulary understanding.'},
+  {id:585,subject:'Developmental Reading',question:'Which reading approach teaches students to use three cueing systems — semantic, syntactic, and graphophonic — when encountering unknown words?',choices:['Phonics-first approach','Whole Language approach','Direct Instruction approach','Linguistic approach'],answer:1,explanation:'Whole Language (Goodman, Smith) uses three cueing systems: semantic (meaning), syntactic (grammar/structure), and graphophonic (sound-symbol). Critics argue it under-emphasizes systematic phonics instruction.'},
+
+  // ════════════════════════════════
+  // GUIDANCE & COUNSELING — 20 q
+  // ════════════════════════════════
+  {id:586,subject:'Guidance & Counseling',question:'Republic Act 9258, the "Guidance and Counseling Act of 2004," requires school counselors to have at minimum:',choices:['A bachelor\'s degree in any field','A master\'s degree in Guidance and Counseling','A bachelor\'s degree in Psychology or Guidance and a PRC license','A doctorate in Education'],answer:2,explanation:'RA 9258 professionalizes guidance counseling in the Philippines — requiring practitioners to hold a bachelor\'s degree in Guidance/Psychology and pass the PRC licensure examination for counselors.'},
+  {id:587,subject:'Guidance & Counseling',question:'The PRIMARY goal of a school guidance program is to:',choices:['Identify and report problem students to administration','Assist all students in their academic, personal-social, and career development','Counsel only students with emotional problems','Provide academic remediation for failing students'],answer:1,explanation:'School guidance programs follow a comprehensive, developmental model — serving ALL students (not just those with problems) in three domains: academic, personal-social, and career development.'},
+  {id:588,subject:'Guidance & Counseling',question:'Holland\'s Theory of Career Development identifies six personality types and matching work environments. The acronym is:',choices:['SMART','RIASEC','OCEAN','MBTI'],answer:1,explanation:'Holland\'s RIASEC: Realistic, Investigative, Artistic, Social, Enterprising, Conventional — personality types that match best with corresponding work environments for career satisfaction.'},
+  {id:589,subject:'Guidance & Counseling',question:'A student who chooses a career based on self-concept and how it evolves over time is best explained by which career theory?',choices:['Holland\'s Theory','Super\'s Life-Span Life-Space Theory','Krumboltz\'s Social Learning Theory','Roe\'s Personality Theory'],answer:1,explanation:'Super\'s Life-Span Life-Space Theory centers on self-concept as the core of career development — people implement their self-concept through career choices across different life stages.'},
+  {id:590,subject:'Guidance & Counseling',question:'A school counselor conducts a structured interview with a student who is experiencing difficulty with peers. This one-on-one helping relationship is called:',choices:['Group counseling','Individual counseling','Psychotherapy','Career counseling'],answer:1,explanation:'Individual counseling is a one-on-one therapeutic relationship between counselor and student — addressing personal, academic, or social concerns in a confidential, supportive setting.'},
+  {id:591,subject:'Guidance & Counseling',question:'The technique of "active listening" in counseling includes all EXCEPT:',choices:['Maintaining appropriate eye contact','Reflecting feelings and content','Giving advice and solutions immediately','Using minimal encouragers (e.g., "I see," "Go on")'],answer:2,explanation:'Active listening involves attending, reflecting, paraphrasing, and empathizing — NOT giving immediate advice. Premature advice-giving interrupts the client\'s self-exploration process.'},
+  {id:592,subject:'Guidance & Counseling',question:'Confidentiality in school counseling means:',choices:['All student information is shared freely with teachers','Student disclosures are kept private, with legal exceptions (e.g., harm to self or others)','Parents always have full access to all counseling content','Counseling records must be posted publicly'],answer:1,explanation:'Confidentiality protects the counseling relationship — information is kept private EXCEPT when there is risk of harm to self or others, abuse, or court order.'},
+  {id:593,subject:'Guidance & Counseling',question:'Which counseling theory emphasizes that behavior is purposeful and focused on goals, and that people can change by choosing different behaviors? This is associated with:',choices:['Psychoanalytic theory','Reality Therapy (Glasser)','Person-centered therapy (Rogers)','Behavioral therapy (Skinner)'],answer:1,explanation:'Reality Therapy (William Glasser): people choose their behaviors to fulfill basic needs; counseling helps clients evaluate current behavior and choose more effective actions aligned with their goals.'},
+  {id:594,subject:'Guidance & Counseling',question:'A school counselor facilitates a group session where students with similar concerns share experiences and support each other. This is:',choices:['Individual counseling','Peer mediation','Group counseling','Classroom guidance'],answer:2,explanation:'Group counseling brings together students with similar concerns — providing mutual support, normalization of experiences, and skill development in a group context.'},
+  {id:595,subject:'Guidance & Counseling',question:'The comprehensive school guidance program model (ASCA National Model) organizes services into three components. Which of the following is NOT one of them?',choices:['School Counseling Core Curriculum','Individual Student Planning','Responsive Services','Academic Enrichment Programs'],answer:3,explanation:'ASCA National Model components: (1) School Counseling Core Curriculum (preventive), (2) Individual Student Planning, and (3) Responsive Services (reactive). Academic Enrichment is NOT a guidance program component.'},
+  {id:596,subject:'Guidance & Counseling',question:'A student says "I feel so stupid — I can\'t do anything right." The counselor responds: "It sounds like you\'re feeling really frustrated and down on yourself." This technique is called:',choices:['Advice giving','Reflection of feeling','Interpretation','Confrontation'],answer:1,explanation:'Reflection of feeling (empathic reflection) mirrors the emotional content of the client\'s statement back to them — validating feelings and deepening self-awareness.'},
+  {id:597,subject:'Guidance & Counseling',question:'Career maturity, as described by Super\'s theory, refers to:',choices:['Having a stable, high-paying job','The readiness to make career decisions appropriate to one\'s age and stage of career development','Completing a college degree','Achieving career goals by age 30'],answer:1,explanation:'Career maturity is the degree to which a person\'s career behaviors and attitudes are appropriate to their developmental stage — measured by career planning, career exploration, and decision-making skills.'},
+  {id:598,subject:'Guidance & Counseling',question:'The guidance counselor\'s role that involves working with teachers and parents to support student development is called:',choices:['Counseling','Consultation','Assessment','Placement'],answer:1,explanation:'Consultation is the guidance role of working indirectly with students by advising and collaborating with significant others (teachers, parents, administrators) who directly affect the student.'},
+  {id:599,subject:'Guidance & Counseling',question:'Aptitude tests in guidance measure:',choices:['What a student has already learned','A student\'s potential ability to learn specific skills or tasks','A student\'s personality type','A student\'s career preferences'],answer:1,explanation:'Aptitude tests measure potential or capacity to learn — predicting how well a student can develop skills in a specific area (e.g., Differential Aptitude Test, musical aptitude).'},
+  {id:600,subject:'Guidance & Counseling',question:'Which DepEd issuance institutionalized the Comprehensive School Counseling Program in Philippine public schools?',choices:['RA 9258','DepEd Order No. 40 s.2012','RA 7836','DepEd Order No. 83 s.2020'],answer:3,explanation:'DepEd Order No. 83 s.2020 (Guidelines on the Implementation of the Comprehensive School Counseling Program) institutionalized structured guidance programs in Philippine public schools.'},
+  {id:601,subject:'Guidance & Counseling',question:'A teacher refers a student to the guidance counselor after noticing behavioral changes. The counselor reviews school records, conducts interviews, and administers tests. This process is called:',choices:['Career planning','Psychoeducation','Individual inventory / appraisal','Group counseling'],answer:2,explanation:'Individual inventory or appraisal is the guidance service of collecting comprehensive data about students (academic records, test results, anecdotal records, interviews) to understand them holistically.'},
+  {id:602,subject:'Guidance & Counseling',question:'Which of the following BEST describes the difference between guidance and counseling?',choices:['Guidance and counseling are identical services','Guidance is broader, preventive and educational; counseling is a specific therapeutic helping relationship for personal concerns','Counseling is for everyone; guidance is only for troubled students','Guidance requires a license; counseling does not'],answer:1,explanation:'Guidance = broad, preventive, group-oriented, educational (includes information services, orientation, career planning). Counseling = specific, remedial/developmental, individual/small group, therapeutic relationship.'},
+  {id:603,subject:'Guidance & Counseling',question:'Person-centered counseling (Carl Rogers) relies on three core conditions. Which of the following is NOT one of Rogers\' core conditions?',choices:['Unconditional positive regard','Empathy','Congruence/genuineness','Directive questioning'],answer:3,explanation:'Rogers\' three core conditions: Unconditional Positive Regard (acceptance), Empathy (understanding the client\'s world), and Congruence/Genuineness (counselor authenticity). Directive questioning is NOT a core condition.'},
+  {id:604,subject:'Guidance & Counseling',question:'Psychoeducation in school counseling refers to:',choices:['Teaching psychological theories to students','Providing information and education about mental health, coping skills, and developmental issues to students/parents/teachers','Psychoanalysis for all students','Using psychology textbooks in class'],answer:1,explanation:'Psychoeducation is the guidance service of providing educational information about psychological topics — mental health, study skills, coping strategies, developmental changes — to students, parents, and teachers.'},
+  {id:605,subject:'Guidance & Counseling',question:'The minimum ratio recommended for school counselors to students in the Philippines (DepEd) is:',choices:['1:100','1:250','1:500','1:1000'],answer:2,explanation:'DepEd recommends approximately 1 school counselor for every 500 students — though many Philippine schools fall far below this standard due to shortage of licensed counselors.'},
+
+  // ════════════════════════════════
+  // SPECIAL EDUCATION (SPED) — 20 q
+  // ════════════════════════════════
+  {id:606,subject:'Special Education (SPED)',question:'RA 7277 (Magna Carta for Disabled Persons) defines a person with disability as one who has:',choices:['Any medical condition requiring treatment','A physical, mental, or sensory impairment that substantially limits one or more major life activities','A learning problem diagnosed by a teacher','Any condition requiring medication'],answer:1,explanation:'RA 7277 defines disability as a physical, mental, or sensory impairment that substantially limits one or more major life activities — establishing rights and protection for persons with disabilities in the Philippines.'},
+  {id:607,subject:'Special Education (SPED)',question:'An Individualized Education Program (IEP) for a student with special needs should be developed by:',choices:['The SPED teacher alone','A multidisciplinary team including parents, teacher, specialist, and when appropriate, the student','The principal and school board only','A medical doctor exclusively'],answer:1,explanation:'The IEP is developed collaboratively by a multidisciplinary team: general and SPED teacher, parents, specialists (psychologist, therapist), and — when appropriate — the student themselves.'},
+  {id:608,subject:'Special Education (SPED)',question:'A student with dyslexia primarily struggles with:',choices:['Attention and hyperactivity','Word recognition, decoding, and spelling due to phonological processing difficulties','Social interaction and communication','Mathematical reasoning'],answer:1,explanation:'Dyslexia is a specific learning disability characterized by difficulty with accurate and/or fluent word recognition, poor spelling, and decoding — caused by phonological processing deficits, NOT intelligence.'},
+  {id:609,subject:'Special Education (SPED)',question:'Which of the following is a characteristic of Autism Spectrum Disorder (ASD)?',choices:['Primary difficulty with reading and writing only','Challenges in social communication, interaction, and restricted/repetitive behaviors','Primarily a hearing impairment','Exclusively a behavioral disorder due to poor parenting'],answer:1,explanation:'ASD (DSM-5) is characterized by persistent challenges in social communication/interaction AND restricted, repetitive patterns of behavior, interests, or activities.'},
+  {id:610,subject:'Special Education (SPED)',question:'Attention-Deficit/Hyperactivity Disorder (ADHD) is characterized by:',choices:['Low IQ and learning delays','Persistent patterns of inattention and/or hyperactivity-impulsivity that interfere with functioning','Hearing and vision impairments','Emotional disturbance only'],answer:1,explanation:'ADHD (DSM-5): persistent, developmentally inappropriate inattention and/or hyperactivity-impulsivity that significantly impairs functioning in multiple settings.'},
+  {id:611,subject:'Special Education (SPED)',question:'The LEAST restrictive environment (LRE) principle in special education means:',choices:['Students with disabilities should be in completely separate schools','Students with disabilities should be educated alongside non-disabled peers to the maximum extent appropriate','Special education classes are always best','Home schooling is the least restrictive option'],answer:1,explanation:'LRE mandates that students with disabilities be educated with non-disabled peers to the maximum extent appropriate — requiring a continuum of placement options rather than automatic segregation.'},
+  {id:612,subject:'Special Education (SPED)',question:'A gifted student who also has a learning disability (e.g., gifted and dyslexic) is referred to as:',choices:['Twice-challenged','Doubly disabled','Twice-exceptional (2e)','High-functioning disabled'],answer:2,explanation:'Twice-exceptional (2e) students are those who are gifted (above-average ability) AND have a co-existing disability (learning disability, ADHD, ASD, etc.) — requiring both gifted and special education services.'},
+  {id:613,subject:'Special Education (SPED)',question:'The term "exceptionality" in special education refers to:',choices:['Students who are rude or disruptive','Students who differ significantly from the norm in abilities, learning characteristics, or behavior','Only gifted students','Only students with physical disabilities'],answer:1,explanation:'Exceptionality refers to significant deviation from the average — including both students with disabilities AND those who are gifted/talented. Both groups have special educational needs.'},
+  {id:614,subject:'Special Education (SPED)',question:'Applied Behavior Analysis (ABA) is most commonly used in the education of students with:',choices:['Visual impairments','Autism Spectrum Disorder','Learning disabilities only','Physical disabilities'],answer:1,explanation:'ABA is the evidence-based intervention most widely used for students with ASD — using behavioral principles (reinforcement, prompting, shaping) to teach communication, social, and academic skills.'},
+  {id:615,subject:'Special Education (SPED)',question:'A student who has an IQ score below 70 AND significant limitations in adaptive behavior is classified as having:',choices:['Learning disability','Intellectual disability (formerly mental retardation)','Emotional behavioral disorder','Developmental delay only'],answer:1,explanation:'Intellectual disability (AAIDD): IQ below 70 AND significant limitations in adaptive behavior (conceptual, social, practical skills) — onset during the developmental period (before age 18).'},
+  {id:616,subject:'Special Education (SPED)',question:'Which instructional modification gives a student more time to complete tests or assignments?',choices:['Curriculum modification','Accommodation','Modification of content standards','Exemption'],answer:1,explanation:'An accommodation changes HOW a student learns or demonstrates learning (extended time, larger print, scribe) WITHOUT changing the content or standards — unlike modifications, which change WHAT is taught.'},
+  {id:617,subject:'Special Education (SPED)',question:'The Philippine SPED program follows a continuum of service delivery. Which setting is the MOST inclusive?',choices:['Special school','Self-contained special class','Resource room program','Regular class with support services'],answer:3,explanation:'The continuum from most to least inclusive: Regular class with support → Resource room → Self-contained class → Special school → Home/hospital. Regular class with itinerant SPED support is most inclusive.'},
+  {id:618,subject:'Special Education (SPED)',question:'A student who is deaf has which type of exceptionality?',choices:['Physical disability','Sensory impairment (hearing)','Orthopedic impairment','Communication disorder'],answer:1,explanation:'Deafness is a sensory impairment (hearing) — affecting the reception of auditory information. Educational approaches include sign language, oral-aural methods, and total communication.'},
+  {id:619,subject:'Special Education (SPED)',question:'DepEd\'s "Inclusive Education" policy aims to:',choices:['Separate learners with special needs into exclusive schools','Ensure learners with diverse needs are welcomed and supported in regular schools','Eliminate special education programs','Provide separate curricula for students with disabilities'],answer:1,explanation:'Inclusive Education (DepEd) ensures that ALL learners — including those with disabilities, giftedness, and other diverse needs — are welcomed, supported, and able to participate in regular schools.'},
+  {id:620,subject:'Special Education (SPED)',question:'Early intervention programs for children with disabilities are most effective when begun:',choices:['At age 6 when formal schooling starts','As early as possible (birth to age 3 is most critical)','During middle school','After diagnosis at any age'],answer:1,explanation:'Research consistently shows early intervention (birth to 3 years) is most effective — the brain\'s neuroplasticity is highest, maximizing the impact of therapeutic and educational support.'},
+  {id:621,subject:'Special Education (SPED)',question:'A SPED teacher uses visual schedules, sensory breaks, and structured routines for a student with ASD. These are examples of:',choices:['Punishment strategies','Environmental modifications and accommodations','Standard teaching methods','Behavioral management exclusively'],answer:1,explanation:'Visual schedules, sensory supports, and structured routines are environmental modifications and accommodations — reducing sensory overload and providing predictability for students with ASD.'},
+  {id:622,subject:'Special Education (SPED)',question:'The "full inclusion" model in special education means:',choices:['Students with disabilities are included in all activities except academic classes','All students with disabilities, regardless of the nature or severity, are educated in regular classrooms full-time','Inclusion only for students with mild disabilities','Partial inclusion in non-academic subjects'],answer:1,explanation:'Full inclusion: all students with disabilities — regardless of severity — are educated in age-appropriate regular classrooms full-time, with necessary supports provided within that setting.'},
+  {id:623,subject:'Special Education (SPED)',question:'Universal Design for Learning (UDL) in education means:',choices:['Designing accessible buildings for students with physical disabilities','Designing curriculum, instruction, and assessment from the start to be accessible to all diverse learners','One standardized teaching method for all','Technology-only solutions for special learners'],answer:1,explanation:'UDL (CAST) designs curriculum and instruction to be accessible from the beginning by providing multiple means of representation, engagement, and action/expression — removing barriers for ALL learners.'},
+  {id:624,subject:'Special Education (SPED)',question:'A student with cerebral palsy uses a wheelchair and needs occupational therapy support. This student has which type of special need?',choices:['Intellectual disability','Communication disorder','Orthopedic/physical disability','Sensory impairment'],answer:2,explanation:'Cerebral palsy is a neurological condition affecting motor function — classified as a physical/orthopedic disability. The student may have typical or above-average intelligence with primary physical support needs.'},
+  {id:625,subject:'Special Education (SPED)',question:'Which Philippine law provides for free special education for children with disabilities in all schools?',choices:['RA 7277','RA 9155','RA 7610','RA 10410'],answer:0,explanation:'RA 7277 (Magna Carta for Disabled Persons) guarantees the right of persons with disabilities to quality education, including special education — in public schools free of charge.'},
+
+  // ════════════════════════════════
+  // RESEARCH IN EDUCATION — 25 q
+  // ════════════════════════════════
+  {id:626,subject:'Research in Education',question:'Action research in education is BEST described as:',choices:['Large-scale national research by universities','Systematic inquiry by teachers into their own classroom practice to improve it','Research funded by the government only','Statistical studies of student performance data'],answer:1,explanation:'Action research is practitioner research — teachers systematically investigate their own classroom practice to identify problems and implement improvements. It is cyclical, collaborative, and context-specific.'},
+  {id:627,subject:'Research in Education',question:'Which type of research investigates cause-and-effect relationships by manipulating an independent variable?',choices:['Descriptive research','Correlational research','Experimental research','Historical research'],answer:2,explanation:'Experimental research establishes cause-and-effect by: (1) manipulating the independent variable, (2) measuring the dependent variable, and (3) controlling extraneous variables — the gold standard for causal claims.'},
+  {id:628,subject:'Research in Education',question:'A researcher studies the reading performance of 500 Grade 3 students without trying to change anything. This is:',choices:['Experimental research','Action research','Descriptive research','Case study'],answer:2,explanation:'Descriptive research describes phenomena as they exist — measuring, classifying, and observing without manipulation or intervention. It answers "what is" questions.'},
+  {id:629,subject:'Research in Education',question:'Qualitative research is characterized by:',choices:['Numerical data, statistical analysis, and large samples','In-depth understanding of experiences, meanings, and contexts through non-numerical data','Controlled experiments with control and experimental groups','Standardized tests and measurements only'],answer:1,explanation:'Qualitative research explores meanings, experiences, and perspectives through non-numerical data (interviews, observations, documents) — seeking deep understanding of phenomena in context.'},
+  {id:630,subject:'Research in Education',question:'A research sample is selected randomly, giving every member of the population an equal chance of being selected. This is:',choices:['Purposive sampling','Convenience sampling','Simple random sampling','Stratified sampling'],answer:2,explanation:'Simple random sampling: every member of the population has an equal and independent probability of being selected — ensures representativeness and allows generalization to the population.'},
+  {id:631,subject:'Research in Education',question:'The null hypothesis (H₀) in educational research states that:',choices:['There is a significant difference or relationship','There is NO significant difference or relationship between variables','The research hypothesis is true','The study will find significant results'],answer:1,explanation:'The null hypothesis states there is no significant difference or relationship — it is what researchers attempt to reject through statistical evidence. Rejecting H₀ supports the alternative hypothesis (H₁).'},
+  {id:632,subject:'Research in Education',question:'Which measure of central tendency is most appropriate when data has extreme outliers?',choices:['Mean','Median','Mode','Range'],answer:1,explanation:'The median is resistant to extreme values (outliers) — it divides the distribution at the middle value. The mean is pulled toward outliers, making the median more representative in skewed distributions.'},
+  {id:633,subject:'Research in Education',question:'A researcher ensures the research instrument measures what it is supposed to measure. This is called:',choices:['Reliability','Validity','Objectivity','Feasibility'],answer:1,explanation:'Validity: the degree to which a research instrument accurately measures what it is intended to measure. Types: content validity, construct validity, criterion validity.'},
+  {id:634,subject:'Research in Education',question:'Which data collection method involves the researcher deeply immersing in a community to understand its culture over an extended period?',choices:['Survey research','Experimental study','Ethnography','Content analysis'],answer:2,explanation:'Ethnography (qualitative) involves extended immersion in a culture or community — through participant observation, interviews, and document analysis — to understand social patterns and meanings from the inside.'},
+  {id:635,subject:'Research in Education',question:'A research study follows the same group of students from Grade 1 through Grade 6 to track their reading development over time. This is a:',choices:['Cross-sectional study','Longitudinal study','Case study','Survey'],answer:1,explanation:'A longitudinal study follows the same subjects over an extended period — ideal for studying developmental changes and trajectories. Cross-sectional studies compare different groups at one point in time.'},
+  {id:636,subject:'Research in Education',question:'The Institutional Review Board (IRB) or Ethics Committee in research protects:',choices:['The researcher\'s intellectual property','Research participants from harm — ensuring ethical conduct of research','Government funding of research','Research journal publications'],answer:1,explanation:'IRB/Ethics committees review research proposals to ensure the protection of human participants — applying principles of respect for persons, beneficence, and justice (Belmont Report).'},
+  {id:637,subject:'Research in Education',question:'In a frequency distribution, the score that appears most often is called the:',choices:['Mean','Median','Mode','Standard deviation'],answer:2,explanation:'Mode is the most frequently occurring score in a dataset. It is the only measure of central tendency appropriate for nominal (categorical) data.'},
+  {id:638,subject:'Research in Education',question:'Triangulation in qualitative research refers to:',choices:['Using three research groups','Using multiple data sources, methods, or researchers to enhance credibility and validity','A specific statistical test','Triangular data visualization charts'],answer:1,explanation:'Triangulation strengthens qualitative research by using multiple methods (interviews + observation + documents) or multiple researchers to cross-check findings — enhancing credibility and trustworthiness.'},
+  {id:639,subject:'Research in Education',question:'A survey questionnaire uses a scale of 1-5 (Strongly Disagree to Strongly Agree). This is a:',choices:['Nominal scale','Ordinal/Likert scale','Ratio scale','Interval scale'],answer:1,explanation:'A 1-5 agreement scale is a Likert scale (ordinal) — responses are ordered (ranked) but intervals between points may not be equal. Widely used in attitude and opinion research.'},
+  {id:640,subject:'Research in Education',question:'In experimental research, the group that does NOT receive the treatment is called the:',choices:['Experimental group','Treatment group','Control group','Sample group'],answer:2,explanation:'The control group does not receive the experimental treatment — it provides a baseline comparison to determine whether the treatment caused any observed changes in the experimental group.'},
+  {id:641,subject:'Research in Education',question:'An effect size in research measures:',choices:['The probability that results occurred by chance','The practical significance or magnitude of a research finding','The sample size needed for the study','The statistical significance of a finding'],answer:1,explanation:'Effect size quantifies the practical magnitude of a finding — unlike p-values (statistical significance), effect size tells HOW LARGE the difference or relationship is in practical terms (e.g., Cohen\'s d).'},
+  {id:642,subject:'Research in Education',question:'The PRC and DepEd require teachers to conduct action research. The primary PURPOSE of teacher action research is to:',choices:['Publish research in international journals','Improve teaching practice and student learning outcomes directly in the teacher\'s classroom','Earn additional academic units','Comply with performance management requirements only'],answer:1,explanation:'Action research\'s primary purpose is immediate improvement of practice — teachers identify problems in their classrooms, test interventions, and implement improvements directly benefiting their students.'},
+  {id:643,subject:'Research in Education',question:'Which research design compares two or more groups at a single point in time to study differences?',choices:['Longitudinal design','Cross-sectional design','Action research design','Case study design'],answer:1,explanation:'Cross-sectional design collects data from multiple groups at one point in time — efficient and cost-effective for comparing groups by age, grade level, or other characteristics.'},
+  {id:644,subject:'Research in Education',question:'A teacher notices many students struggle with fractions. She tries a new manipulative-based approach, observes results, reflects, and revises her strategy. This cycle is consistent with:',choices:['Experimental research','Ethnographic research','Action research (Plan-Act-Observe-Reflect cycle)','Survey research'],answer:2,explanation:'The Plan-Act-Observe-Reflect cycle is the core of action research — systematic, iterative inquiry where teachers test interventions and continuously refine their practice based on evidence.'},
+  {id:645,subject:'Research in Education',question:'Content analysis as a research method involves:',choices:['Analyzing blood content in medical research','Systematically examining and interpreting text, images, or media to identify patterns and themes','Analyzing the content of a physics lesson only','A type of experimental research'],answer:1,explanation:'Content analysis systematically examines communication content (text, images, video, speech) to identify patterns, themes, or biases — used in both quantitative (frequency counts) and qualitative forms.'},
+  {id:646,subject:'Research in Education',question:'The standard deviation in statistics measures:',choices:['The most frequently occurring score','The middle value of a dataset','The average distance of scores from the mean (spread/variability)','The highest minus the lowest score'],answer:2,explanation:'Standard deviation measures the average spread of data points around the mean — a small SD means scores are clustered near the mean; a large SD means they are widely spread.'},
+  {id:647,subject:'Research in Education',question:'Purposive sampling (also called judgmental or theoretical sampling) selects participants based on:',choices:['Random selection to represent the population','Specific characteristics or criteria relevant to the research question','Convenience and accessibility','Alphabetical listing of participants'],answer:1,explanation:'Purposive sampling deliberately selects participants who possess specific characteristics relevant to the study — common in qualitative research where depth over representativeness is prioritized.'},
+  {id:648,subject:'Research in Education',question:'A research finding with p < 0.05 means:',choices:['The study has a 5% chance of being valid','There is less than a 5% probability the results occurred by chance alone (statistically significant)','The sample size is 5% of the population','Effect size is 0.05'],answer:1,explanation:'p < 0.05 means there is less than 5% probability the observed results are due to random chance — conventionally accepted as statistically significant in educational research.'},
+  {id:649,subject:'Research in Education',question:'Which is the correct sequence of the research process?',choices:['Data collection → Problem identification → Review of literature → Analysis','Problem identification → Review of literature → Methodology → Data collection → Analysis → Conclusions','Analysis → Data collection → Problem identification → Methodology','Conclusions → Data collection → Problem identification → Review'],answer:1,explanation:'The research process: (1) Identify problem → (2) Review literature → (3) Design methodology → (4) Collect data → (5) Analyze data → (6) Draw conclusions → (7) Disseminate findings.'},
+  {id:650,subject:'Research in Education',question:'A teacher-researcher obtains informed consent from students before collecting data. Informed consent means participants:',choices:['Are forced to participate to avoid consequences','Voluntarily agree to participate after being fully informed of the nature, risks, and purpose of the research','Sign a legal contract','Are paid for their participation'],answer:1,explanation:'Informed consent requires that participants voluntarily agree to participate after receiving full, understandable information about the study\'s purpose, procedures, risks, and their right to withdraw.'},
+
+  // ════════════════════════════════
+  // SCHOOL MANAGEMENT & LEADERSHIP — 20 q
+  // ════════════════════════════════
+  {id:651,subject:'School Management & Leadership',question:'School-Based Management (SBM) as promoted by RA 9155 gives schools the authority to:',choices:['Operate independently without any DepEd oversight','Make decisions on school programs, resources, and governance with community participation','Collect their own taxes for school budget','Hire and fire teachers without DepEd approval'],answer:1,explanation:'SBM under RA 9155 decentralizes authority — schools make decisions on curriculum, budget, personnel, and governance with active participation of teachers, parents, and community.'},
+  {id:652,subject:'School Management & Leadership',question:'A school principal who involves teachers and parents in decision-making is demonstrating which leadership style?',choices:['Autocratic leadership','Laissez-faire leadership','Transformational/Democratic leadership','Transactional leadership'],answer:2,explanation:'Democratic/participative leadership involves stakeholders in decision-making — building ownership, motivation, and collective responsibility for school improvement.'},
+  {id:653,subject:'School Management & Leadership',question:'The School Improvement Plan (SIP) in Philippine schools covers a period of:',choices:['1 year','3 years','5 years','10 years'],answer:1,explanation:'The SIP (School Improvement Plan) under DepEd covers a 3-year planning cycle — aligning school goals with DepEd\'s strategic direction and annual implementation plans (AIP).'},
+  {id:654,subject:'School Management & Leadership',question:'Transformational leadership in school management focuses on:',choices:['Maintaining existing systems and rewarding compliance','Inspiring and motivating teachers to achieve a shared vision and go beyond self-interest for school improvement','Strict enforcement of rules and punishment of violations','Administrative efficiency above all else'],answer:1,explanation:'Transformational leadership (Burns, Bass): inspires followers through vision, idealized influence, intellectual stimulation, and individualized consideration — motivating beyond self-interest toward collective goals.'},
+  {id:655,subject:'School Management & Leadership',question:'The PDCA cycle used in school quality management stands for:',choices:['Plan, Direct, Control, Act','Plan, Do, Check, Act','Perform, Direct, Create, Assess','Plan, Develop, Check, Adjust'],answer:1,explanation:'PDCA (Deming/Shewhart cycle): Plan (identify problem and plan improvement) → Do (implement) → Check (evaluate results) → Act (standardize or revise) — a continuous improvement framework.'},
+  {id:656,subject:'School Management & Leadership',question:'Which DepEd document outlines the vision, mission, core values, and strategic objectives of the Department of Education for a 6-year period?',choices:['School Improvement Plan (SIP)','DepEd Strategic Plan (BEDP)','Annual Implementation Plan (AIP)','RPMS Handbook'],answer:1,explanation:'The Basic Education Development Plan (BEDP) is DepEd\'s long-range strategic plan — articulating vision, mission, goals, and strategies for basic education over a multi-year period.'},
+  {id:657,subject:'School Management & Leadership',question:'The Instructional Leader role of the school principal primarily involves:',choices:['Managing school finances and budgets','Supervising and supporting teachers to improve instruction and student learning','Enforcing discipline for students','Handling school maintenance and facilities'],answer:1,explanation:'Instructional leadership focuses on improving teaching quality and student learning — through classroom observation, coaching, professional development, curriculum leadership, and data-driven decision-making.'},
+  {id:658,subject:'School Management & Leadership',question:'Stakeholders in school governance include:',choices:['The principal and teachers only','Students only','All groups with interest in the school: students, teachers, parents, community, local government, industry','Only the PTA and school board'],answer:2,explanation:'School stakeholders include all groups with legitimate interest: students, parents, teachers, administrators, local government units, industry partners, and the broader community.'},
+  {id:659,subject:'School Management & Leadership',question:'SMEA (School Monitoring, Evaluation and Adjustment) in Philippine schools is used for:',choices:['Student grading and ranking','Monitoring school performance against targets and making data-based adjustments','Teacher performance only','Infrastructure monitoring'],answer:1,explanation:'SMEA is DepEd\'s monitoring and evaluation system — schools assess progress against SIP targets, identify gaps, and make evidence-based adjustments to their programs and interventions.'},
+  {id:660,subject:'School Management & Leadership',question:'The "servant leadership" concept is relevant to school administration because it emphasizes:',choices:['The principal\'s authority over all school decisions','Leaders serving others — prioritizing the growth and well-being of teachers and students over personal power','Leadership through fear and compliance','Strict hierarchical control'],answer:1,explanation:'Servant leadership (Greenleaf): leaders put the needs of others first — prioritizing teacher professional growth, student welfare, and community service over personal power and status.'},
+  {id:661,subject:'School Management & Leadership',question:'A school principal uses student performance data to identify weak areas and plan targeted interventions. This is called:',choices:['Random planning','Data-driven decision making','Anecdotal management','Reactive administration'],answer:1,explanation:'Data-driven decision making uses student performance data, assessment results, and school metrics to identify needs and design targeted, evidence-based programs and interventions.'},
+  {id:662,subject:'School Management & Leadership',question:'The Local School Board (LSB) in the Philippines is chaired by:',choices:['The DepEd regional director','The city/municipal mayor','The school principal','The PTA president'],answer:1,explanation:'The Local School Board (under RA 5447/Local Government Code) is chaired by the city/municipal mayor — with members including the local DepEd supervisor, local legislators, teachers\' association rep, and parent/youth reps.'},
+  {id:663,subject:'School Management & Leadership',question:'Class Program and school calendar preparation is the responsibility of:',choices:['DepEd central office only','The school principal in consultation with teachers and within DepEd guidelines','Each teacher independently','The PTA exclusively'],answer:1,explanation:'The school principal prepares the class program and school calendar in consultation with teachers and within DepEd guidelines — adapting to local needs while following national standards.'},
+  {id:664,subject:'School Management & Leadership',question:'Which management style is MOST effective in crisis situations requiring quick, decisive action?',choices:['Democratic leadership','Laissez-faire leadership','Autocratic/directive leadership','Consultative leadership'],answer:2,explanation:'Autocratic/directive leadership is most appropriate in genuine crises — where quick, decisive decisions are needed without time for consultation. However, it should be used situationally, not as the default style.'},
+  {id:665,subject:'School Management & Leadership',question:'The PPST Domain that addresses teachers\' participation in professional development and school improvement is:',choices:['Domain 1: Content Knowledge and Pedagogy','Domain 5: Assessment and Reporting','Domain 6: Community Linkages and Professional Engagement','Domain 7: Personal Growth and Professional Development'],answer:3,explanation:'PPST Domain 7 (Personal Growth and Professional Development) addresses teachers\' commitment to career development, professional reflection, and participation in professional learning communities and school improvement.'},
+  {id:666,subject:'School Management & Leadership',question:'A School Learning Action Cell (SLAC) is a professional learning community where:',choices:['Only administrators meet to set school policies','Teachers collaborate to solve teaching problems, share strategies, and improve their practice together','Students engage in remedial classes','Parents attend guidance seminars'],answer:1,explanation:'SLAC is DepEd\'s school-based professional development mechanism — teachers meet regularly to collaborate on teaching challenges, share practices, and collectively improve learning outcomes.'},
+  {id:667,subject:'School Management & Leadership',question:'Financial management in public schools requires compliance with which law governing government accounting?',choices:['RA 7836','Government Accounting and Auditing Manual (GAAM) and COA rules','RA 9155 only','RA 4670'],answer:1,explanation:'Public school financial management must comply with COA (Commission on Audit) rules, Government Accounting and Auditing Manual, and DepEd financial guidelines — ensuring transparency and accountability.'},
+  {id:668,subject:'School Management & Leadership',question:'The principle of "subsidiarity" in school governance means:',choices:['All decisions are made at the national level','Decisions should be made at the lowest appropriate level — empowering school-level management','Higher levels always override lower levels','Communities have no role in school decisions'],answer:1,explanation:'Subsidiarity: decisions should be made at the lowest level capable of addressing them effectively — the basis for school-based management and community participation in Philippine education.'},
+  {id:669,subject:'School Management & Leadership',question:'A principal conducts classroom observations and provides constructive feedback to improve teacher instruction. This process is called:',choices:['Summative evaluation','Instructional supervision','Punitive management','Administrative inspection'],answer:1,explanation:'Instructional supervision involves systematic classroom observation followed by conferences and feedback — aimed at improving teaching quality rather than evaluating for punitive purposes.'},
+  {id:670,subject:'School Management & Leadership',question:'The MBWA (Management by Walking Around) approach to school leadership means the principal:',choices:['Manages from the office through memos only','Regularly visits classrooms, talks with teachers and students, and stays connected to school realities','Walks around to monitor discipline only','Uses CCTV cameras to monitor all areas'],answer:1,explanation:'MBWA: the principal actively moves around the school — visiting classrooms, engaging with teachers/students, and staying connected to real classroom conditions rather than managing solely from the office.'},
 ];
 
-let nxtId=561, curFlashSubj=null, flashDeck=[], flashIdx=0, isFlipped=false;
+let nxtId=671, curFlashSubj=null, flashDeck=[], flashIdx=0, isFlipped=false;
 let qzQs=[], qzIdx=0, qzScore=0, isAnswered=false, qzTimer=null, qzTimerSecs=0;
 let stats={correct:0,attempted:0,flashReviewed:0}, scores=[], importedFiles=[];
 
 const shuf=a=>{const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;};
 
+// ═══ STUDY MODE STATE ═══
+let studyMode = null; // 'flashcards' | 'situational'
+let fcCat = 'all';   // category filter for flashcards
+let sitCat = 'all';  // category filter for situational
+let sitSubj = null;  // specific subject filter for situational
+let sitDeck = [], sitIdx = 0, sitAnswered = false;
+let sitSession = { cor: 0, wro: 0, tot: 0 };
+
 // ═══ NAVIGATION ═══
 function go(page){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('pg-'+page).classList.add('on');
+  const pg = document.getElementById('pg-'+page);
+  if(pg) pg.classList.add('on');
   const nb=document.querySelector(`[data-page="${page}"]`);
   if(nb)nb.classList.add('active');
   if(page==='dashboard')renderDash();
   if(page==='subjects')renderSubjects();
   if(page==='flashcards')initFlash();
+  if(page==='sit')initSit();
   if(page==='quiz')initQuizSetup();
   if(page==='scores')renderScores();
   if(page==='add')renderAddPage();
+  updateSidebarBadges();
+}
+
+// ═══ STUDY MODE CONTROL ═══
+function setStudyMode(mode){
+  studyMode = mode;
+  // Update mode button styles
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('mode-active'));
+  if(mode === 'flashcards'){
+    const btn = document.getElementById('mode-fc-btn');
+    if(btn) btn.classList.add('mode-active');
+    go('flashcards');
+  } else {
+    const btn = document.getElementById('mode-sit-btn');
+    if(btn) btn.classList.add('mode-active');
+    go('sit');
+  }
+}
+
+function updateSidebarBadges(){
+  const fcTotal = Q.length;
+  const fcEl = document.getElementById('fc-count-badge');
+  const sitEl = document.getElementById('sit-count-badge');
+  if(fcEl) fcEl.textContent = fcTotal;
+  if(sitEl) sitEl.textContent = Q.length;
+}
+
+// ═══ FLASHCARD CATEGORY FILTER ═══
+function setFcCat(cat, el){
+  fcCat = cat;
+  curFlashSubj = null;
+  document.querySelectorAll('#fc-cat-tabs .cat-tab').forEach(t=>t.classList.remove('on'));
+  if(el) el.classList.add('on');
+  initFlash();
+}
+
+// ═══ SITUATIONAL MCQ ═══
+function setSitCat(cat, el){
+  sitCat = cat;
+  sitSubj = null;
+  document.querySelectorAll('#sit-cat-tabs .cat-tab').forEach(t=>t.classList.remove('on'));
+  if(el) el.classList.add('on');
+  initSit();
+}
+
+function initSit(){
+  // Build subject pills based on category
+  let subjsInCat;
+  if(sitCat === 'all'){
+    subjsInCat = SUBJECTS;
+  } else {
+    subjsInCat = SUBJECTS.filter(s=>s.category === sitCat);
+  }
+
+  // Build pills
+  const pillsEl = document.getElementById('sit-pills');
+  if(pillsEl){
+    const allPill = `<button class="pill ${!sitSubj?'on':''}" onclick="sitSubj=null;document.querySelectorAll('#sit-pills .pill').forEach(p=>p.classList.remove('on'));this.classList.add('on');loadSit()">All</button>`;
+    const subPills = subjsInCat.map(s=>`
+      <button class="pill ${sitSubj===s.name?'on':''}" onclick="sitSubj='${s.name}';document.querySelectorAll('#sit-pills .pill').forEach(p=>p.classList.remove('on'));this.classList.add('on');loadSit()">${s.icon} ${s.name}</button>`).join('');
+    pillsEl.innerHTML = allPill + subPills;
+  }
+  loadSit();
+}
+
+function loadSit(){
+  // Filter Q based on cat and subj
+  let pool = [...Q];
+  if(sitSubj){
+    pool = pool.filter(q=>q.subject===sitSubj);
+  } else if(sitCat !== 'all'){
+    const catSubjNames = SUBJECTS.filter(s=>s.category===sitCat).map(s=>s.name);
+    pool = pool.filter(q=>catSubjNames.includes(q.subject));
+  }
+  sitDeck = shuf(pool);
+  sitIdx = 0;
+  sitAnswered = false;
+  renderSit();
+}
+
+function renderSit(){
+  const el = document.getElementById('sit-content');
+  if(!el) return;
+
+  if(!sitDeck.length){
+    el.innerHTML=`<div class="empty-state" style="padding:60px">
+      <div class="empty-icon">📭</div>
+      <div class="empty-t">No questions in this selection</div>
+      <div class="empty-s">Try selecting a different category or subject</div>
+    </div>`;
+    return;
+  }
+
+  const q = sitDeck[sitIdx];
+  const L = ['A','B','C','D'];
+  const pct = sitDeck.length > 1 ? Math.round((sitIdx/sitDeck.length)*100) : 0;
+
+  // Detect if question has a scenario (long question with real-life context)
+  const isScenario = q.question.length > 100 || /teacher|student|class|principal|school|pupil|classroom|learner|scenario|situation/i.test(q.question);
+  const [scenarioPart, questionPart] = splitScenario(q.question);
+
+  el.innerHTML = `
+  <!-- Progress bar -->
+  <div style="margin-bottom:16px">
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:6px;font-weight:600">
+      <span>${q.subject}</span>
+      <span>${sitIdx+1} of ${sitDeck.length}</span>
+    </div>
+    <div style="background:var(--border);border-radius:999px;height:6px;overflow:hidden">
+      <div style="height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent2));width:${pct}%;transition:width .4s"></div>
+    </div>
+  </div>
+
+  <div class="sit-card" id="sit-main-card">
+    ${scenarioPart ? `
+    <div class="sit-scenario">
+      <div class="sit-scenario-text">${scenarioPart}</div>
+    </div>` : ''}
+
+    <div class="sit-question-wrap">
+      <div class="sit-q-label">Question ${sitIdx+1}</div>
+      <div class="sit-q-text">${questionPart || q.question}</div>
+    </div>
+
+    <div class="sit-choices" id="sit-choices">
+      ${q.choices.map((c,i)=>`
+        <button class="sit-choice" id="sit-ch-${i}" onclick="pickSit(${i})">
+          <div class="sit-letter">${L[i]}</div>
+          <div class="sit-choice-text">${c}</div>
+        </button>`).join('')}
+    </div>
+
+    <div class="sit-feedback" id="sit-feedback">
+      <div class="sit-fb-verdict" id="sit-fb-verdict"></div>
+      <div class="sit-fb-expl" id="sit-fb-expl"></div>
+    </div>
+
+    <div class="sit-footer">
+      <div class="sit-progress-info" id="sit-prog-info">Select an answer above</div>
+      <button class="btn btn-accent" id="sit-next-btn" onclick="nextSit()" style="display:none">
+        ${sitIdx < sitDeck.length - 1 ? 'Next Question →' : '🎉 Finish Session'}
+      </button>
+    </div>
+  </div>`;
+}
+
+function splitScenario(text){
+  // If question has clear scenario structure (teacher/student context), split at the last sentence that ends with '?'
+  // or split at sentences that are context vs. question
+  if(text.length <= 100) return ['', text];
+
+  // Check for patterns like "...Which/What/How/Who..."
+  const splitPat = /\.\s+(Which|What|How|Who|Where|When|Based|A student|A teacher|The teacher|The principal|The researcher|In this|From the|According to)/i;
+  const m = text.match(splitPat);
+  if(m){
+    const idx = text.indexOf(m[0]);
+    const scenario = text.substring(0, idx+1).trim();
+    const question = text.substring(idx+1).trim().replace(/^\s+/, '');
+    return [scenario, question];
+  }
+
+  // Fallback: if longer than 160 chars, show first part as scenario
+  if(text.length > 160){
+    const lastPeriod = text.substring(0, Math.floor(text.length*0.6)).lastIndexOf('.');
+    if(lastPeriod > 60){
+      return [text.substring(0, lastPeriod+1).trim(), text.substring(lastPeriod+1).trim()];
+    }
+  }
+  return ['', text];
+}
+
+function pickSit(idx){
+  if(sitAnswered) return;
+  sitAnswered = true;
+
+  const q = sitDeck[sitIdx];
+  const isCorrect = idx === q.answer;
+
+  // Update session score
+  sitSession.tot++;
+  if(isCorrect) sitSession.cor++; else sitSession.wro++;
+  stats.attempted++;
+  if(isCorrect){ stats.correct++; }
+  updateSitScore();
+
+  // Color choices
+  const choices = document.querySelectorAll('.sit-choice');
+  choices.forEach((btn,i)=>{
+    btn.disabled = true;
+    if(i === q.answer) btn.classList.add('correct');
+    else if(i === idx && !isCorrect) btn.classList.add('wrong');
+  });
+
+  // Show feedback
+  const fb = document.getElementById('sit-feedback');
+  const verdict = document.getElementById('sit-fb-verdict');
+  const expl = document.getElementById('sit-fb-expl');
+  if(fb && verdict && expl){
+    fb.classList.add('on');
+    verdict.className = 'sit-fb-verdict ' + (isCorrect ? 'sit-fb-correct' : 'sit-fb-wrong');
+    verdict.textContent = isCorrect ? '✅ Correct!' : `❌ Incorrect — The answer is ${['A','B','C','D'][q.answer]}`;
+    expl.textContent = q.explanation ? '💡 ' + q.explanation : '';
+  }
+
+  const progInfo = document.getElementById('sit-prog-info');
+  if(progInfo) progInfo.textContent = isCorrect ? '🎯 Well done!' : '📖 Review the explanation';
+
+  const nextBtn = document.getElementById('sit-next-btn');
+  if(nextBtn) nextBtn.style.display = 'block';
+}
+
+function nextSit(){
+  if(sitIdx >= sitDeck.length - 1){
+    // Show session complete toast
+    const pct = sitSession.tot > 0 ? Math.round((sitSession.cor/sitSession.tot)*100) : 0;
+    toast(`🎉 Session complete! Score: ${sitSession.cor}/${sitSession.tot} (${pct}%)`);
+    // Reload deck
+    loadSit();
+    return;
+  }
+  sitIdx++;
+  sitAnswered = false;
+  renderSit();
+  // Smooth scroll to top of content
+  document.getElementById('sit-content').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function updateSitScore(){
+  const c = document.getElementById('sit-cor');
+  const w = document.getElementById('sit-wro');
+  const t = document.getElementById('sit-tot');
+  if(c) c.textContent = sitSession.cor;
+  if(w) w.textContent = sitSession.wro;
+  if(t) t.textContent = sitSession.tot;
+}
+
+function resetSitSession(){
+  sitSession = { cor: 0, wro: 0, tot: 0 };
+  updateSitScore();
+  loadSit();
+  toast('🔄 Session reset!');
 }
 
 // ═══ DASHBOARD ═══
@@ -1435,7 +2010,7 @@ function renderDash(){
   document.getElementById('st-acc').textContent=stats.attempted>0?Math.round((stats.correct/stats.attempted)*100)+'%':'—';
   document.getElementById('st-flash').textContent=stats.flashReviewed;
   document.getElementById('db-topics').innerHTML=SUBJECTS.map(s=>`
-    <div onclick="curFlashSubj='${s.name}';go('flashcards')" style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--surface2);border-radius:8px;cursor:pointer;border:1px solid var(--border);transition:all .15s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+    <div onclick="curFlashSubj='${s.name}';fcCat='all';setStudyMode('flashcards')" style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--surface2);border-radius:8px;cursor:pointer;border:1px solid var(--border);transition:all .15s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
       <span style="font-size:17px">${s.icon}</span>
       <div style="flex:1;font-size:12px;font-weight:600">${s.name}</div>
       <span class="chip">${Q.filter(q=>q.subject===s.name).length} Q</span>
@@ -1457,11 +2032,15 @@ function renderSubjects(){
     </div>`;
     html+=subs.map(s=>{
       const c=Q.filter(q=>q.subject===s.name).length;
-      return`<div class="subj-card" onclick="curFlashSubj='${s.name}';go('flashcards')">
+      return`<div class="subj-card" onclick="curFlashSubj='${s.name}';fcCat='all';setStudyMode('flashcards')">
         <div class="subj-icon">${s.icon}</div>
         <div class="subj-name">${s.name}</div>
         <div class="subj-count">${c} questions</div>
         <div class="prog-bg"><div class="prog-fill" style="width:${Math.min(c/25*100,100)}%;background:${s.color}"></div></div>
+        <div style="margin-top:10px;display:flex;gap:6px">
+          <span style="font-size:10px;background:rgba(79,70,229,0.1);color:var(--accent);padding:2px 8px;border-radius:999px;font-weight:600">🃏 Cards</span>
+          <span style="font-size:10px;background:rgba(124,58,237,0.1);color:var(--accent2);padding:2px 8px;border-radius:999px;font-weight:600" onclick="event.stopPropagation();sitSubj='${s.name}';sitCat='all';setStudyMode('situational')">✏️ MCQ</span>
+        </div>
       </div>`;
     }).join('');
   }
@@ -1470,7 +2049,20 @@ function renderSubjects(){
 
 // ═══ FLASHCARDS ═══
 function initFlash(){
-  const pills=['All',...SUBJECTS.map(s=>s.name)];
+  // Get subjects based on category
+  let subjsInCat;
+  if(fcCat === 'all'){
+    subjsInCat = SUBJECTS;
+  } else {
+    subjsInCat = SUBJECTS.filter(s=>s.category===fcCat);
+  }
+
+  // If curFlashSubj is from a different category, reset it
+  if(curFlashSubj && !subjsInCat.find(s=>s.name===curFlashSubj)){
+    curFlashSubj = null;
+  }
+
+  const pills=['All',...subjsInCat.map(s=>s.name)];
   document.getElementById('fc-pills').innerHTML=pills.map(n=>`
     <button class="pill ${(curFlashSubj===n||(n==='All'&&!curFlashSubj))?'on':''}"
       onclick="curFlashSubj='${n==='All'?'':n}';document.querySelectorAll('#fc-pills .pill').forEach(p=>p.classList.remove('on'));this.classList.add('on');loadFlash()">${n}</button>`).join('');
@@ -1478,7 +2070,14 @@ function initFlash(){
 }
 
 function loadFlash(){
-  flashDeck=curFlashSubj?shuf(Q.filter(q=>q.subject===curFlashSubj)):shuf([...Q]);
+  let pool = [...Q];
+  // Apply category filter first
+  if(fcCat !== 'all'){
+    const catSubjNames = SUBJECTS.filter(s=>s.category===fcCat).map(s=>s.name);
+    pool = pool.filter(q=>catSubjNames.includes(q.subject));
+  }
+  // Then apply subject filter
+  flashDeck=curFlashSubj?shuf(pool.filter(q=>q.subject===curFlashSubj)):shuf(pool);
   flashIdx=0;isFlipped=false;
   document.getElementById('fc-inner').classList.remove('flipped');
   document.getElementById('rate-area').style.display='none';
@@ -1918,6 +2517,7 @@ function toast(msg){
 
 // ═══ INIT ═══
 renderDash();
+updateSidebarBadges();
 </script>
 </body>
 </html>
